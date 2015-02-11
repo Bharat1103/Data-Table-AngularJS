@@ -1,0 +1,42 @@
+@CHARSET "UTF-8";
+
+.custom-pad {
+	padding-right: 5%;
+}
+
+.custom-width {
+	width: 100%;
+}
+
+.panel-custom-margin {
+	margin-top: 5%;
+}
+
+
+.btn-margin-left {
+	margin-left: 10%;
+}
+
+.search-align {
+	width: 100% !important;
+}
+
+.form-width-align {
+	width: 85% !important;
+}
+
+.form-custom-pad
+{
+	padding-right:1%;
+}
+
+.table-striped>tbody>tr:nth-child(odd)>td, 
+.table-striped>tbody>tr:nth-child(odd)>th {
+   background-color: DarkSeaGreen;
+ }
+ 
+ td,th{
+ padding:2% !important;
+ margin:2% !important;
+ }
+ 

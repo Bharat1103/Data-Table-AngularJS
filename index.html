@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>DashBoard</title>
+<link rel="stylesheet"
+	href="styles/bootstrap-3.3.2-dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="styles/Temp.css">
+<script type="text/javascript" src="js/angular/lib/angular.min.js"></script>
+<script type="text/javascript" src="js/script/app.js"></script>
+</head>
+
+<!-- defining the ng-app directive -->
+<body data-ng-app="DashBoardApp">
+
+	<!-- start of container-fluid -->
+	<div class="container-fluid">
+
+		<!-- start of first row, contains navbar only -->
+		<div class="row">
+			<nav class="navbar navbar-inverse nav-justified reset-bottom-margin">
+				<div class="col-md-4">
+					<form class="navbar-form navbar-left custom-width" role="search">
+						<div class="form-group form-width-align">
+							<input type="text" class="form-control search-align"
+								placeholder="Search">
+						</div>
+					</form>
+				</div>
+			</nav>
+
+			<!-- end of first row -->
+		</div>
+
+		<div>
+			<h1>DashBoard</h1>
+		</div>
+		<hr>
+
+		<!-- start of controller directive -->
+		<div data-ng-controller="DashBoardController">
+
+			<!-- start of second row contains only inline form -->
+			<div class="row">
+				<form class="form-inline ">
+					<div class="form-group form-custom-pad btn-margin-left">
+						<label for="InputSearch">Search : <input
+							class="form-control" data-ng-model="searchText"
+							placeholder="Search" type="search" />
+						</label>
+					</div>
+					<div class="form-group form-custom-pad btn-margin-left">
+						<label>Limit : </label> <select class="form-control"
+							data-ng-model="Limit" data-ng-init="Limit=10">
+							<option value="10">10</option>
+							<option value="20">20</option>
+							<option value="30">30</option>
+							<option value="50">50</option>
+						</select>
+					</div>
+					<div class="form-group form-custom-pad btn-margin-left">
+						<label>Sort By : </label> <select class="form-control"
+							data-ng-init="selectorderBy='name'" data-ng-model="selectorderBy"
+							data-ng-change="SortList(selectorderBy)">
+							<option value='name'>Name</option>
+							<option value='gender'>Gender</option>
+							<option value='company'>Company</option>
+							<option value='email'>Email</option>
+							<option value='phone'>Phone</option>
+							<option value='registered'>Registered On</option>
+						</select>
+					</div>
+
+					<!-- end of form -->
+				</form>
+
+				<!-- end of second row -->
+			</div>
+			<hr>
+
+			<!-- start of table tag -->
+			<table class="table-striped custom-width">
+
+
+				<tr>
+					<th><a href="#" data-ng-click="Sort('name')">NAME <span
+							data-ng-class="{'glyphicon glyphicon-triangle-top':isSortUp('name')}"></span>
+							<span
+							data-ng-class="{'glyphicon glyphicon-triangle-bottom':isSortDown('name')}"></span>
+					</a></th>
+
+					<th><a href="#" data-ng-click="Sort('gender')">GENDER<span
+							data-ng-class="{'glyphicon glyphicon-triangle-top':isSortUp('gender')}"></span>
+							<span
+							data-ng-class="{'glyphicon glyphicon-triangle-bottom':isSortDown('gender')}"></span>
+					</a></th>
+
+					<th><a href="#" data-ng-click="Sort('company')">COMPANY<span
+							data-ng-class="{'glyphicon glyphicon-triangle-top':isSortUp('company')}"></span>
+							<span
+							data-ng-class="{'glyphicon glyphicon-triangle-bottom':isSortDown('company')}"></span></a></th>
+
+					<th><a href="#" data-ng-click="Sort('email')">EMAIL<span
+							data-ng-class="{'glyphicon glyphicon-triangle-top':isSortUp('email')}"></span>
+							<span
+							data-ng-class="{'glyphicon glyphicon-triangle-bottom':isSortDown('email')}"></span>
+					</a></th>
+
+					<th><a href="#" data-ng-click="Sort('phone')">PHONE<span
+							data-ng-class="{'glyphicon glyphicon-triangle-top':isSortUp('phone')}"></span>
+							<span
+							data-ng-class="{'glyphicon glyphicon-triangle-bottom':isSortDown('phone')}"></span></a></th>
+
+					<th><a href="#" data-ng-click="Sort('registered')">REGISTERED
+							ON<span
+							data-ng-class="{'glyphicon glyphicon-triangle-top':isSortUp('registered')}"></span><span
+							data-ng-class="{'glyphicon glyphicon-triangle-bottom':isSortDown('registered')}"></span>
+					</a></th>
+
+				</tr>
+
+				<!-- display the table with given filters and custom results from app.js-->
+
+				<tr
+					data-ng-repeat="x in results | filter:searchText | limitTo:Limit">
+					<td>{{ x.name }}</td>
+					<td>{{ x.gender }}</td>
+					<td>{{ x.company }}</td>
+					<td>{{ x.email }}</td>
+					<td>{{ x.phone }}</td>
+					<td>{{ x.registered }}</td>
+				</tr>
+
+				<!-- end of table tag -->
+			</table>
+
+			<!-- end of controller directive tag -->
+		</div>
+
+		<!-- end of container-fluid -->
+	</div>
+
+	<!-- end of body -->
+</body>
+
+<!-- end of document -->
+</html>
